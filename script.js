@@ -15,12 +15,12 @@ var timer = document.getElementById("timer");
 var timerText = document.getElementById("timer-text");
 
 //score container elements:
-var score = document.getElementById("score");
+var score = document.getElementById("score-text");
 var saveScoreButton = document.querySelector(".save-score");
 
 //initials container
 
-var initialsInput = document.querySelector(".initials");
+var initialsInput = document.getElementById("initials");
 
 //create variables for everything needed
 var timeInterval;
@@ -33,19 +33,19 @@ var currentQuestionIndex = 0;
 //How can we add questions and answers? Arrays, objects, var questions: etc
 var questions = [
     {
-        question: "what does the H in HTML stand for?",
+        q: "what does the H in HTML stand for?",
         answers: ["hypertext", "hello", "handle"],
         correctAnswer: "hypertext"
     },
 
     {
-        question: "What is a variable in javascript?",
+        q: "What is a variable in javascript?",
         answers: ["a handle", "a function", "a container to store data"],
         correctAnswer: "a container to store data"
     },
 
     {
-        question: "what is a function in Javascript?",
+        q: "what is a function in Javascript?",
         answers: ["a set of statements that perform a task", "a set of strings", "a common value"],
         correctAnswer: "a set of statements that perform a task"
     }
@@ -65,6 +65,7 @@ startButton.style.display = "none";
 
   startTimer();
   nextQuestion();
+  saveScoreButton();
 }
 
 // THEN a timer starts and I am presented with a question
@@ -101,12 +102,16 @@ function startTimer() {
 //event.listener click
 function nextQuestion() {
     if (currentQuestionIndex < questions.length) {
+        //this get the object representing the current question
         var question = questions[currentQuestionIndex];
        // Display the question text
-        questionText.textContent = question.question; 
+       //question.question extracts the text of that question
+       //question is identifying the var
+       //q is identifying the question within the array
+        questionText.textContent = question.q; 
         // Clear previous answers
-        clearInterval(answersList);
-
+        //got how to clear html div content in stackoverflow.com
+        answersList.innerHTML="",
         // Create list items for each answer choice
         question.answers.forEach(function (answer) {
             var listItem = document.createElement("li");
@@ -117,7 +122,8 @@ function nextQuestion() {
             answersList.appendChild(listItem);
         });
     } else {
-        endQuiz(); // If all questions are answered, end the quiz
+        endQuiz();
+         // If all questions are answered, end the quiz
     }
 }
 // WHEN I answer a question incorrectly
@@ -137,7 +143,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
     currentQuestionIndex++;
     //need a little delay 
     //found code in stackoverflow
-    setTimeout(nextQuestion, 1000);
+    setTimeout(nextQuestion, 500);
 }
 
 // THEN time is subtracted from the clock
@@ -150,10 +156,16 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 // WHEN the game is over
 
 function endQuiz() {
+    //questionText.textContent = "Quiz Over!";
+   // clearInterval(answersList);
+   // clearInterval(resultText);
+    //score.textContent = score;
     questionText.textContent = "Quiz Over!";
-    clearInterval(answersList);
-    clearInterval(resultText);
-    score.textContent = score;
+    answersList.textContent = "";
+    resultText.textContent = "";
+    initialsInput.style.display = "block"; // Display input for initials
+    saveScoreButton.style.display = "block"; // Display the save score button
+    score.textContent = score; 
 }
 //if game is over
 // THEN I can save my initials and my score
