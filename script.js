@@ -6,12 +6,19 @@ var timerCount;
 var timeLeft;
 var testDone;
 var timeInterval;
-var score;
+var score= 0;
+var currentQuestionIndex = 0;
 
 
     //identify them in html document.getElementByID etc 
-var startButton = document.querySelector(".start-button");
-var timerElement = document.querySelector(".timer-count")
+var startButton = document.getElementById("start-button");
+var timerElement = document.getElementById("timer-count");
+var answersList = document.getElementById("answers-list");
+var resultText = document.getElementById("result-text"); 
+var timer = document.getElementById("timer");
+var score = document.getElementById("score");
+var saveScoreButton = document.getElementById("save-score");
+
 
 //getting started with the basics
     //Create a quiz in javascript, HTML & CSS could be basic
