@@ -31,7 +31,7 @@ var currentQuestionIndex = 0;
 //Create a quiz in javascript, HTML & CSS could be basic
 //html could contain body and divs
 //How can we add questions and answers? Arrays, objects, var questions: etc
-var Questions = [
+var questions = [
     {
         question: "what does the H in HTML stand for?",
         answers: ["hypertext", "hello", "handle"],
@@ -130,14 +130,14 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         resultText.textContent = "Correct!";
     } else {
         resultText.textContent = "Incorrect!";
-        clearInterval(timerInterval);
+        clearInterval(timeInterval);
         timer.textContent = "0";
     }
 
     currentQuestionIndex++;
     //need a little delay 
     //found code in stackoverflow
-    setTimeout(displayNextQuestion, 1000);
+    setTimeout(nextQuestion, 1000);
 }
 
 // THEN time is subtracted from the clock
@@ -153,8 +153,6 @@ function endQuiz() {
     questionText.textContent = "Quiz Over!";
     clearInterval(answersList);
     clearInterval(resultText);
-    initialsInput.style.display = "block";
-    saveScoreButton.style.display = "block";
     score.textContent = score;
 }
 //if game is over
