@@ -16,6 +16,7 @@ var timerElement = document.getElementById("timer-count");
 var answersList = document.getElementById("answers-list");
 var resultText = document.getElementById("result-text"); 
 var timer = document.getElementById("timer");
+var timerText = document.querySelector("timer-text");
 var score = document.getElementById("score");
 var saveScoreButton = document.getElementById("save-score");
 
