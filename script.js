@@ -58,11 +58,14 @@ var Questions = [
 // WHEN I click the start button
 //create a function to start the quiz
 function startQuiz() {
+
+//hide the start button from site
+//found info in "linuxhint.com"
+startButton.style.display = "none"; 
+
   startTimer();
   nextQuestion();
 }
-//must use click eventListener, "click"
-//must create button for that
 
 // THEN a timer starts and I am presented with a question
 //must create a function with interval, increments??, decrements??, timer does not stop??
@@ -91,22 +94,51 @@ function startTimer() {
 
 // WHEN I answer a question
 //there will be a questions with multiple answers (TF? Multiple Choice? Both?)
-function selectAnswer() {}
 // THEN I am presented with another question
 //Next question will apear when I click on answer.
 //function navigate(direction)??
 //propogation??
 //event.listener click
 function nextQuestion() {
-    if(currentQuestionIndex < Questions.length){
+    if (currentQuestionIndex < questions.length) {
         var question = questions[currentQuestionIndex];
-        var questionText.textContent = questions
-    }
+       // Display the question text
+        questionText.textContent = question.question; 
+        // Clear previous answers
+        clearInterval(answersList);
 
+        // Create list items for each answer choice
+        question.answers.forEach(function (answer) {
+            var listItem = document.createElement("li");
+            listItem.textContent = answer;
+            listItem.addEventListener("click", function () {
+                checkAnswer(answer, question.correctAnswer);
+            });
+            answersList.appendChild(listItem);
+        });
+    } else {
+        endQuiz(); // If all questions are answered, end the quiz
+    }
 }
 // WHEN I answer a question incorrectly
 //if correct....else...
 //click on incorrect answer
+
+function checkAnswer(selectedAnswer, correctAnswer) {
+    if (selectedAnswer === correctAnswer) {
+        score++;
+        resultText.textContent = "Correct!";
+    } else {
+        resultText.textContent = "Incorrect!";
+        clearInterval(timerInterval);
+        timer.textContent = "0";
+    }
+
+    currentQuestionIndex++;
+    //need a little delay 
+    //found code in stackoverflow
+    setTimeout(displayNextQuestion, 1000);
+}
 
 // THEN time is subtracted from the clock
 //else deduct time from timer
@@ -116,16 +148,23 @@ function nextQuestion() {
 // THEN the game is over
 //game will be over
 // WHEN the game is over
+
+function endQuiz() {
+    questionText.textContent = "Quiz Over!";
+    clearInterval(answersList);
+    clearInterval(resultText);
+    initialsInput.style.display = "block";
+    saveScoreButton.style.display = "block";
+    score.textContent = score;
+}
 //if game is over
 // THEN I can save my initials and my score
-
 //save scores
 //localStorage.setItem
-function saveScore(){
-    var initials = initialsInput.a();
-
-}
+saveScoreButton.addEventListener("click", function () {
+    var initials = initialsInput.value;
+    localStorage.setItem("highscore", JSON.stringify({initials, score }));
+});
 
 //button event listeners
 startButton.addEventListener("click", startQuiz);
-saveScoreButton.addEventListener("click", saveScore);
