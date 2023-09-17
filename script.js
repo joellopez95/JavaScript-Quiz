@@ -6,16 +6,16 @@
 var startButton = document.querySelector(".start-button");
 
 //question container elements:
-var answersList = document.querySelector(".answers-list");
-var resultText = document.querySelector(".result-text");
-var questionText = document.querySelector("question-text");
+var answersList = document.getElementById("answers-list");
+var resultText = document.getElementById("result-text");
+var questionText = document.getElementById("question-text");
 
 //timer container elements:
-var timer = document.querySelector(".timer");
-var timerText = document.querySelector(".timer-text");
+var timer = document.getElementById("timer");
+var timerText = document.getElementById("timer-text");
 
 //score container elements:
-var score = document.querySelector(".score");
+var score = document.getElementById("score");
 var saveScoreButton = document.querySelector(".save-score");
 
 //initials container
