@@ -11,14 +11,14 @@ var currentQuestionIndex = 0;
 
 
     //identify them in html document.getElementByID etc 
-var startButton = document.getElementById("start-button");
-var timerElement = document.getElementById("timer-count");
-var answersList = document.getElementById("answers-list");
-var resultText = document.getElementById("result-text"); 
-var timer = document.getElementById("timer");
-var timerText = document.querySelector("timer-text");
-var score = document.getElementById("score");
-var saveScoreButton = document.getElementById("save-score");
+var startButton = document.querySelector(".start-button");
+var timerElement = document.querySelector(".timer-count");
+var answersList = document.querySelector(".answers-list");
+var resultText = document.querySelector(".result-text"); 
+var timer = document.querySelector(".timer");
+var timerText = document.querySelector(".timer-text");
+var score = document.querySelector(".score");
+var saveScoreButton = document.querySelector(".save-score");
 
 
 //getting started with the basics
