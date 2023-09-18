@@ -23,11 +23,11 @@ To run this project locally, follow these steps:
 - The game is over when you have answered all the questions or the timer reaches 0.
 - You can save your initials and score at the end of the quiz.
 - Visual step by step guide: 
-![stepBystep](Images/Start.png)
-![stepBystep](Images/quiz-begins.png)
-![stepBystep](Images//correct.png)
-![stepBystep](Images/incorrect.png)
-![stepBystep](Images/completeinitials.png)
+![stepBystep](images/Start.png)
+![stepBystep](images/quiz-begins.png)
+![stepBystep](images//correct.png)
+![stepBystep](images/incorrect.png)
+![stepBystep](images/completeinitials.png)
 
 ## Credits
 - Jeremy Henry - Bootcamp Instructor
