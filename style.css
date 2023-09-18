@@ -1,0 +1,62 @@
+/* simple background color */
+body {
+  background-color: white;
+  font-family: Arial;
+}
+
+/* Center the header text and add some margin */
+header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Styles the main quiz container */
+.quiz-container {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* questions will appear on the left  */
+.question-container {
+  margin-left: 30px;
+  cursor: pointer;
+
+}
+
+/*center all containers*/
+.result-container {
+  text-align: center;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.score-container {
+  text-align: center;
+}
+
+.initials-container {
+  text-align: center;
+}
+
+/*save score button, found examples w3 schools */
+#save-score {
+  background-color: green;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Style the start button */
+#start-button {
+  margin: 0 auto;
+  padding: 5px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

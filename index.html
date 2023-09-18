@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Javascript Quiz</title>
   </head>
   <body>
     <header>
       <h1>Javascript Quiz</h1>
-      <button class="start-button">Start</button>
     </header>
 
-    <main>
+    <main class="quiz-container">
+
       <section>
+        <button id="start-button">Start</button>
         <div class="question-container">
           <div id="question-text"></div>
-          <div id="answers-list"></div>
+          <ul id="answers-list"></ul>
         </div>
       </section>
 
@@ -23,6 +25,7 @@
         <div class="result-container">
           <div id="result-text"><div>
         </div>
+      </section>
 
       <section>
           <div class="timer-container">
@@ -35,6 +38,7 @@
       <section>
         <div class="score-container">
             <div id="score-text">Score</div>
+            <div id="score">0</div>
         </div>
       </section>
 
@@ -42,10 +46,10 @@
         <div class ="initials-container">
           <label for ="initials">Enter Initials</label>  
           <input type="text" id="initials">
-          <button class="save-score">save-score</button>
+          <button id="save-score">save score</button>
         </div>
       </section>
-
+    
     </main>
     <script src="script.js"></script>
   </body>

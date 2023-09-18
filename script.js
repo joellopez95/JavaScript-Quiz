@@ -3,7 +3,7 @@
 //identify them in html document.getElementByID etc
 
 //button class
-var startButton = document.querySelector(".start-button");
+var startButton = document.getElementById("start-button");
 
 //question container elements:
 var answersList = document.getElementById("answers-list");
@@ -15,8 +15,8 @@ var timer = document.getElementById("timer");
 var timerText = document.getElementById("timer-text");
 
 //score container elements:
-var score = document.getElementById("score-text");
-var saveScoreButton = document.querySelector(".save-score");
+var score = document.getElementById("score");
+var saveScoreButton = document.getElementById("save-score");
 
 //initials container
 
@@ -65,7 +65,6 @@ startButton.style.display = "none";
 
   startTimer();
   nextQuestion();
-  saveScoreButton();
 }
 
 // THEN a timer starts and I am presented with a question
@@ -111,7 +110,7 @@ function nextQuestion() {
         questionText.textContent = question.q; 
         // Clear previous answers
         //got how to clear html div content in stackoverflow.com
-        answersList.innerHTML="",
+        answersList.textContent="",
         // Create list items for each answer choice
         question.answers.forEach(function (answer) {
             var listItem = document.createElement("li");
@@ -165,7 +164,7 @@ function endQuiz() {
     resultText.textContent = "";
     initialsInput.style.display = "block"; // Display input for initials
     saveScoreButton.style.display = "block"; // Display the save score button
-    score.textContent = score; 
+    score.textContent = "score"; 
 }
 //if game is over
 // THEN I can save my initials and my score
@@ -174,7 +173,16 @@ function endQuiz() {
 saveScoreButton.addEventListener("click", function () {
     var initials = initialsInput.value;
     localStorage.setItem("highscore", JSON.stringify({initials, score }));
+    renderMessage();
 });
+//got code from our weeklyContent>>webAPIs>>23inslocalstoragelesson
+function renderMessage() {
+    var initials = JSON.parse(localStorage.getItem("highscore"));
+    if (initials !== null) {
+      document.querySelector(".initials-container").textContent = initialsInput.value + 
+      " scored " + score
+    }
+  }
 
 //button event listeners
 startButton.addEventListener("click", startQuiz);
