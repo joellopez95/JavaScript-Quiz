@@ -85,7 +85,7 @@ function startTimer() {
     seconds--;
     timer.textContent = seconds;
 
-    if (seconds <= 0) {
+    if (seconds <= 0 || questions.length === currentQuestionIndex) {
       clearInterval(timeInterval);
       endQuiz();
     }
@@ -165,6 +165,8 @@ function endQuiz() {
     initialsInput.style.display = "block"; // Display input for initials
     saveScoreButton.style.display = "block"; // Display the save score button
     score.textContent = "score"; 
+
+
 }
 //if game is over
 // THEN I can save my initials and my score
